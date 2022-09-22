@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 
 @Component({
 	selector: 'input-form',
 	templateUrl: './input-form.component.html'
 })
 export class InputFormComponent implements OnInit {
-	public form: FormGroup | undefined;
-	constructor(private builder: FormBuilder){
+	public form: UntypedFormGroup | undefined;
+	constructor(private builder: UntypedFormBuilder){
 	}
 	public ngOnInit(){
 		this.form = this.builder.group( {

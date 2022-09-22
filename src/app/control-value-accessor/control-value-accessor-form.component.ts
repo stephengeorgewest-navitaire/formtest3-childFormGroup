@@ -1,24 +1,24 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 
 @Component({
 	selector: 'control-value-accessor-form',
 	templateUrl: './control-value-accessor-form.component.html'
 })
 export class ControlValueAccessorFormComponent implements OnInit {
-	public form: FormGroup | undefined;
-	constructor(private builder: FormBuilder){
+	public form: UntypedFormGroup | undefined;
+	constructor(private builder: UntypedFormBuilder){
 	}
 	public ngOnInit(){
 		this.form = this.builder.group( {
 			"knights": this.builder.array([
-				new FormControl(),
-				new FormControl(),
-				new FormControl()
+				new UntypedFormControl(),
+				new UntypedFormControl(),
+				new UntypedFormControl()
 			]),
 		});
 
-		this.form.addControl("party", new FormControl());
+		this.form.addControl("party", new UntypedFormControl());
 		this.form.addControl("outerInput", this.builder.control("",[Validators.required]));
 	}
 	public setValue(){

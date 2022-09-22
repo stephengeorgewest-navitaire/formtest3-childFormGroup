@@ -1,17 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { ControlContainer, FormControl, FormGroup } from '@angular/forms';
+import { ControlContainer, UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 
 @Component({
 	selector: 'control-container-party-form',
 	templateUrl: './control-container-party-form.component.html',
 })
 export class ControlContainerPartyFormComponent implements OnInit  {
-	public form : FormGroup;
+	public form : UntypedFormGroup;
 	constructor(private controlContainer: ControlContainer) { }
 
 	ngOnInit(): void {
-		this.form = this.controlContainer.control as FormGroup;
-		this.form.addControl("count", new FormControl("",[]));
-		this.form.addControl("ControlContainerInput2", new FormControl("",[]));
+		this.form = this.controlContainer.control as UntypedFormGroup;
+		this.form.addControl("count", new UntypedFormControl("",[]));
+		this.form.addControl("ControlContainerInput2", new UntypedFormControl("",[]));
 	}
 }

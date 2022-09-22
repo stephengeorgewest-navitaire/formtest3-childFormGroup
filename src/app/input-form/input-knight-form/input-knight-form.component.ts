@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 
 @Component({
 	selector: 'input-knight-form[type][form]',
@@ -7,14 +7,14 @@ import { FormControl, FormGroup } from '@angular/forms';
 })
 export class InputKnightFormComponent implements OnInit  {
 	@Input() public type: "color" | "sparrow";
-	@Input() public form : FormGroup;
+	@Input() public form : UntypedFormGroup;
 
 	ngOnInit(): void {
-		this.form.addControl("name", new FormControl("",[]));
-		this.form.addControl("quest", new FormControl("",[]));
+		this.form.addControl("name", new UntypedFormControl("",[]));
+		this.form.addControl("quest", new UntypedFormControl("",[]));
 		if(this.type === "color")
-			this.form.addControl("favoriteColor", new FormControl("",[]));
+			this.form.addControl("favoriteColor", new UntypedFormControl("",[]));
 		else
-			this.form.addControl("sparrow", new FormControl("",[]));
+			this.form.addControl("sparrow", new UntypedFormControl("",[]));
 	}
 }

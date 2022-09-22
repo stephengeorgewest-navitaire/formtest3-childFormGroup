@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormArray, UntypedFormBuilder, FormControl, UntypedFormGroup, Validators } from '@angular/forms';
 
 @Component({
 	selector: 'app-root',
@@ -7,8 +7,8 @@ import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@ang
 	styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-	public form: FormGroup | undefined;
-	constructor(private builder: FormBuilder){
+	public form: UntypedFormGroup | undefined;
+	constructor(private builder: UntypedFormBuilder){
 	}
 	public ngOnInit(){
 		this.form = this.builder.group( {
