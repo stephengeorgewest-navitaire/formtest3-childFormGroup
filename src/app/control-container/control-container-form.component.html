@@ -1,0 +1,25 @@
+<h1>Bridge Crossing</h1>
+<h4>ControlContainer in constructor</h4>
+<form (submit)="submit()" [formGroup]="form" *ngIf="form">
+	<mat-form-field>
+		<mat-label>Outer Form Input</mat-label>
+		<input matInput formControlName="outerInput" required/>
+		<mat-error>{{form.controls["outerInput"].errors | json}}</mat-error>
+	</mat-form-field>
+	<control-container-party-form formGroupName="party">
+	</control-container-party-form>
+	<fieldset formGroupName="knights" *ngIf="form.controls['knights']">
+		<legend>Party Members</legend>
+		<control-container-knight-form
+			*ngFor="let control of $any(form.controls['knights']).controls; let i= index"
+			[formArrayName]="i"
+			[type]="i === $any(form.controls['knights']).length-1?'sparrow':'color'"
+		></control-container-knight-form>
+	</fieldset>
+	<pre>{{form.value | json}}</pre>
+	<button mat-stroked-button type="submit" color="primary"[disabled]="!form.valid">Submit</button>
+	<button mat-stroked-button type="submit" color="primary">Submit</button>
+	<button mat-stroked-button type="button" color="primary"(click)="form.markAllAsTouched()">markTouched</button>
+	<button mat-stroked-button type="button" color="primary"(click)="setValue()">setValue</button>
+	<button mat-stroked-button type="button" color="primary"(click)="removeValue()">removeValue</button>
+</form>

@@ -1,0 +1,24 @@
+<h1>Bridge Crossing</h1>
+<h4>Pass form as input</h4>
+<form (submit)="submit()" [formGroup]="form" *ngIf="form">
+	<mat-form-field>
+		<mat-label>Outer Form Input</mat-label>
+		<input matInput formControlName="outerInput" required/>
+		<mat-error>{{form.controls["outerInput"].errors | json}}</mat-error>
+	</mat-form-field>
+	<input-party-form [form]="$any(form.controls['party'])"></input-party-form>
+	<fieldset formGroupName="knights" *ngIf="form.controls['knights']">
+		<legend>Party Members</legend>
+		<input-knight-form
+			*ngFor="let control of $any(form.controls['knights']).controls; let i= index"
+			[form]="control"
+			[type]="i === $any(form.controls['knights']).length-1?'sparrow':'color'"
+		></input-knight-form>
+	</fieldset>
+	<pre>{{form.value | json}}</pre>
+	<button mat-stroked-button type="submit" color="primary"[disabled]="!form.valid">Submit</button>
+	<button mat-stroked-button type="submit" color="primary">Submit</button>
+	<button mat-stroked-button type="button" color="primary"(click)="form.markAllAsTouched()">markTouched</button>
+	<button mat-stroked-button type="button" color="primary"(click)="setValue()">setValue</button>
+	<button mat-stroked-button type="button" color="primary"(click)="removeValue()">removeValue</button>
+</form>

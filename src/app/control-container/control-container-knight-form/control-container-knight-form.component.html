@@ -1,0 +1,23 @@
+<fieldset [formGroup]="form">
+	<legend>Question<mat-error *ngIf="!form.valid && form.touched"> (Not Valid)</mat-error></legend>
+	<mat-form-field>
+		<mat-label>Name</mat-label>
+		<input matInput formControlName="name" required placeholder="nameplach"/>
+		<mat-error>{{form.controls["name"].errors | json}}</mat-error>
+	</mat-form-field>
+	<mat-form-field>
+		<mat-label>Quest</mat-label>
+		<input matInput formControlName="quest" required />
+		<mat-error>{{form.controls["quest"].errors | json}}</mat-error>
+	</mat-form-field>
+	<mat-form-field *ngIf="type==='color'">
+		<mat-label>Color</mat-label>
+		<input matInput type="color" formControlName="favoriteColor" required />
+		<mat-error>{{form.controls["favoriteColor"].errors | json}}</mat-error>
+	</mat-form-field>
+	<div style="display:inline-block" *ngIf="type==='sparrow'">
+		<label>Sparrow</label>
+		<input type="range" formControlName="sparrow" required />
+		<mat-error *ngIf="form.controls['sparrow'].errors && form.controls['sparrow'].touched">{{form.controls["sparrow"].errors | json}}</mat-error>
+	</div>
+</fieldset>

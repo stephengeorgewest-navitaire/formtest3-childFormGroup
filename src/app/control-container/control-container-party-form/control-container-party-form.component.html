@@ -1,0 +1,13 @@
+<fieldset [formGroup]="form">
+	<legend>Party</legend>
+	<mat-form-field>
+	<mat-label>Party Size</mat-label>
+	<input matInput formControlName="count" placeholder="pick a number" required/>
+	<mat-error>{{form.controls["count"].errors | json}}</mat-error>
+	</mat-form-field>
+	<mat-form-field>
+	<mat-label>FormInput2</mat-label>
+	<input matInput formControlName="ControlContainerInput2" required/>
+	<mat-error>{{form.controls["ControlContainerInput2"].errors | json}}</mat-error>
+	</mat-form-field>
+</fieldset>
