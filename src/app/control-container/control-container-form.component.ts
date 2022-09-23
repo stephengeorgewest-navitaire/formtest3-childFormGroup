@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, FormGroup, Validators } from '@angular/forms';
+import { OuterForm } from '../form-types';
 
 @Component({
 	selector: 'control-container-form',
 	templateUrl: './control-container-form.component.html'
 })
 export class ControlContainerFormComponent implements OnInit {
-	public form: UntypedFormGroup | undefined;
+	public form: FormGroup<OuterForm> | undefined;
 	constructor(private builder: UntypedFormBuilder){
 	}
 	public ngOnInit(){
@@ -35,7 +36,7 @@ export class ControlContainerFormComponent implements OnInit {
 			},{
 				name: "Gallihad",
 				quest: "Holly Grail",
-				sparrow: "15"
+				sparrow: 15
 			}]
 		});
 	}

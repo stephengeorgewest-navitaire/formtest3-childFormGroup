@@ -1,17 +1,22 @@
 import { Component, OnInit } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, FormGroup, Validators } from '@angular/forms';
+import { OuterForm } from '../form-types';
 
 @Component({
 	selector: 'input-form',
 	templateUrl: './input-form.component.html'
 })
 export class InputFormComponent implements OnInit {
-	public form: UntypedFormGroup | undefined;
+	public form: FormGroup<OuterForm> | undefined;
 	constructor(private builder: UntypedFormBuilder){
 	}
 	public ngOnInit(){
 		this.form = this.builder.group( {
-			"knights": this.builder.array([this.builder.group({}),this.builder.group({}),this.builder.group({})]),
+			"knights": this.builder.array([
+				this.builder.group({}),
+				this.builder.group({}),
+				this.builder.group({})
+			]),
 			"party": this.builder.group({})
 		});
 
@@ -35,7 +40,7 @@ export class InputFormComponent implements OnInit {
 			},{
 				name: "Gallihad",
 				quest: "Holly Grail",
-				sparrow: "15"
+				sparrow: 15
 			}]
 		});
 	}

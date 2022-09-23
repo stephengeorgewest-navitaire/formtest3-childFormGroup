@@ -2,7 +2,7 @@
 <h4>Implement ControlValueAccessor</h4>
 <form (submit)="submit()" [formGroup]="form" *ngIf="form">
 	<mat-form-field>
-		<mat-label>outerInput</mat-label>
+		<mat-label>Outer Form Input</mat-label>
 		<input matInput formControlName="outerInput" required/>
 		<mat-error>{{form.controls["outerInput"].errors | json}}</mat-error>
 	</mat-form-field>
