@@ -1,17 +1,19 @@
-import { FormArray, FormControl, FormGroup } from "@angular/forms";
+import { FormArray, FormControl, FormGroup, UntypedFormControl } from "@angular/forms";
 
 export interface KnightForm {
 	name: FormControl<string>;
 	quest: FormControl<string>;
+	/* one of:
 	favoriteColor?: FormControl<string>;
 	sparrow?: FormControl<number | undefined>;
+	or any other control
+	*/
+	[key: string | number | symbol]: UntypedFormControl;
 }
 
 export interface PartyForm {
 	count: FormControl<number | undefined>,
-	ControlContainerInput2?: FormControl<string>,
-	ControlValueAccessorInput2?: FormControl<string>,
-	FormInput2?: FormControl<string>,
+	[key: string | number | symbol]: UntypedFormControl;
 }
 
 export interface OuterForm {
